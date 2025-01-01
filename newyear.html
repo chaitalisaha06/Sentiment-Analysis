@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New Year!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background: linear-gradient(135deg, #FF9A8B, #FF6A88, #FF99AC);
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        p {
+            font-size: 1.5rem;
+            color: white;
+            margin-top: 20px;
+        }
+
+        .button {
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            background-color: #FFD700;
+            color: #333;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s;
+        }
+
+        .button:hover {
+            transform: scale(1.1);
+            background-color: #FFC300;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: white;
+            opacity: 0.7;
+            border-radius: 50%;
+            animation: fall 4s infinite ease-in-out;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh) translateX(0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(100vh) translateX(calc(-50px + 100vw));
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content">
+        <h1>🎉 Happy New Year 2025! 🎆</h1>
+        <button class="button" onclick="celebrate()">Celebrate Now!</button>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
+            confetti.style.animationDuration = Math.random() * 2 + 3 + 's';
+            document.body.appendChild(confetti);
+
+            setTimeout(() => {
+                confetti.remove();
+            }, 5000);
+        }
+
+        function celebrate() {
+            for (let i = 0; i < 100; i++) {
+                setTimeout(createConfetti, i * 50);
+            }
+            document.getElementById('message').textContent = "Wishing you a wonderful New Year filled with joy, health, and success!";
+        }
+    </script>
+</body>
+
+</html>
